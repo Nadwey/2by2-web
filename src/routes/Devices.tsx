@@ -1,4 +1,4 @@
-import { Link, NavLink, Outlet, useOutletContext, useParams } from "react-router-dom";
+import { NavLink, Outlet, useOutletContext, useParams } from "react-router-dom";
 import useSWR from "swr";
 
 export interface Device {
