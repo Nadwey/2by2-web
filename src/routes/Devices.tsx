@@ -1,4 +1,4 @@
-import { Link, Outlet, useOutletContext, useParams } from "react-router-dom";
+import { Link, NavLink, Outlet, useOutletContext, useParams } from "react-router-dom";
 import useSWR from "swr";
 
 export interface Device {
@@ -31,12 +31,16 @@ function DeviceList({ devices }: { devices: Device[] }) {
                         {devices
                             .filter((device) => device.manufacturer === manufacturer)
                             .map((device) => (
-                                <Link key={device.codename} to={`/devices/${device.codename}`} className="block ml-3">
+                                <NavLink
+                                    key={device.codename}
+                                    to={`/devices/${device.codename}`}
+                                    className={({ isActive }) => (isActive ? "block bg-zinc-800 px-3 py-0.5 rounded-lg" : "block px-3 py-0.5")}
+                                >
                                     <div className="flex flex-col">
                                         <span className="text-lg">{device.name}</span>
                                         <span className="text-zinc-300 text-sm">{device.codename}</span>
                                     </div>
-                                </Link>
+                                </NavLink>
                             ))}
                     </div>
                 </div>
